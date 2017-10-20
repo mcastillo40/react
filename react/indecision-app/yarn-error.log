@@ -1,0 +1,32 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\Matman08\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js init
+
+PATH: 
+  C:\Users\Matman08\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Matman08\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\Program Files (x86)\Bitvise SSH Client;C:\Program Files\PuTTY;C:\Program Files (x86)\Common Files\Acronis\SnapAPI;M:\cygwin64\bin;C:\Program Files\nodejs;C:\Program Files\MySQL\MySQL Utilities 1.6;C:\Users\Matman08\AppData\Local\Microsoft\WindowsApps;C:\Users\Matman08\AppData\Roaming\npm;C:\Users\Matman08\AppData\Local\GitHubDesktop\bin;C:\Program Files\Microsoft VS Code\bin;C:\Program Files (x86)\Common Files\Acronis\TibMounter64;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+
+Yarn version: 
+  1.2.1
+
+Node version: 
+  8.1.3
+
+Platform: 
+  win32 x64
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: Can't answer a question unless a user TTY
+      at ConsoleReporter.question (C:\Users\Matman08\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:87242:59)
+      at Object.<anonymous> (C:\Users\Matman08\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:81759:38)
+      at Generator.next (<anonymous>)
+      at step (C:\Users\Matman08\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:92:30)
+      at C:\Users\Matman08\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:103:13
+      at <anonymous>
