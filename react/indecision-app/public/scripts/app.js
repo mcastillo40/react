@@ -5,10 +5,12 @@ console.log("App working");
 // Create app object title/subtitle
 var app = {
     title: 'Indecision App',
-    subtitle: 'Some Info'
+    subtitle: 'Life is Amazing',
+    options: ['One', 'Two']
 };
 
-// JSX - Javascript XML
+// JSX - Javascript XML 
+// The webpage template example
 var template = React.createElement(
     'div',
     null,
@@ -17,10 +19,15 @@ var template = React.createElement(
         null,
         app.title
     ),
-    React.createElement(
+    app.subtitle && React.createElement(
         'p',
         null,
         app.subtitle
+    ),
+    React.createElement(
+        'p',
+        null,
+        app.options.length > 0 ? 'Here are your options' : 'No options'
     ),
     React.createElement(
         'ol',
@@ -28,7 +35,7 @@ var template = React.createElement(
         React.createElement(
             'li',
             null,
-            'Item 1'
+            'Item 2'
         ),
         React.createElement(
             'li',
@@ -38,15 +45,25 @@ var template = React.createElement(
     )
 );
 
+// Create user object 
 var user = {
-    name: 'Albert',
-    age: '30',
-    location: 'Oregon'
+    name: 'Matt C',
+    age: '19',
+    location: 'Orange County'
 };
 
-var userName = 'Matt';
-var age = 20;
-var userLocation = 'Orange County';
+// Validate that the user has a location
+// If no location than <p> will not be visible
+function getLocation(location) {
+    if (location) {
+        return React.createElement(
+            'p',
+            null,
+            'Location: ',
+            location
+        );
+    }
+}
 
 var template2 = React.createElement(
     'div',
@@ -54,20 +71,15 @@ var template2 = React.createElement(
     React.createElement(
         'h1',
         null,
-        user.name
+        user.name ? user.name : 'Anonymous'
     ),
-    React.createElement(
+    user.age >= 18 && React.createElement(
         'p',
         null,
         'Age: ',
-        age
+        user.age
     ),
-    React.createElement(
-        'p',
-        null,
-        'Location: ',
-        userLocation
-    )
+    getLocation(user.location)
 );
 
 var appRoot = document.getElementById('app');
