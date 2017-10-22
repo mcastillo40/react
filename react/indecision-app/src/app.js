@@ -1,7 +1,7 @@
 console.log("App working");
 
 // Create app object title/subtitle
-var app = {
+const app = {
     title: 'Indecision App',
     subtitle: 'Life is Amazing',
     options: ['One', 'Two']
@@ -9,7 +9,7 @@ var app = {
 
 // JSX - Javascript XML 
 // The webpage template example
-var template = (
+const template = (
     <div>
         <h1>{app.title}</h1> 
 
@@ -27,7 +27,7 @@ var template = (
 );
 
 // Create user object 
-var user = {
+const user = {
     name: 'Matt C',
     age: '19',
     location: 'Orange County'
@@ -41,7 +41,7 @@ function getLocation(location) {
     }
 }
 
-var template2 = (
+const template2 = (
     <div>
         {/*Ternary example to validate if user has a name*/}
         <h1>{user.name ? user.name : 'Anonymous'}</h1> 
@@ -57,6 +57,6 @@ var template2 = (
     </div>
 );
 
-var appRoot = document.getElementById('app');
+const appRoot = document.getElementById('app');
 
 ReactDOM.render(template, appRoot);

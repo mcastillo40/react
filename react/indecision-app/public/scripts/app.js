@@ -1,16 +1,87 @@
 'use strict';
 
-// Var variables allow you to reassign and redefine variable
-// which may lead to complications
-var nameVar = 'Matt';
-var nameVar = 'new Name';
-console.log('nameVar: ', nameVar);
+console.log("App working");
 
-// Cannot redifine let variables
-var nameLet = 'And';
-nameLet = 'again';
-console.log('nameLet: ', nameLet);
+// Create app object title/subtitle
+var app = {
+    title: 'Indecision App',
+    subtitle: 'Life is Amazing',
+    options: ['One', 'Two']
+};
 
-// cannot redifine or reassign const variable
-var nameConst = 'james';
-console.log('nameConst: ', nameConst);
+// JSX - Javascript XML 
+// The webpage template example
+var template = React.createElement(
+    'div',
+    null,
+    React.createElement(
+        'h1',
+        null,
+        app.title
+    ),
+    app.subtitle && React.createElement(
+        'p',
+        null,
+        app.subtitle
+    ),
+    React.createElement(
+        'p',
+        null,
+        app.options.length > 0 ? 'Here are your options' : 'No options'
+    ),
+    React.createElement(
+        'ol',
+        null,
+        React.createElement(
+            'li',
+            null,
+            'Item 2'
+        ),
+        React.createElement(
+            'li',
+            null,
+            'Item 1'
+        )
+    )
+);
+
+// Create user object 
+var user = {
+    name: 'Matt C',
+    age: '19',
+    location: 'Orange County'
+};
+
+// Validate that the user has a location
+// If no location than <p> will not be visible
+function getLocation(location) {
+    if (location) {
+        return React.createElement(
+            'p',
+            null,
+            'Location: ',
+            location
+        );
+    }
+}
+
+var template2 = React.createElement(
+    'div',
+    null,
+    React.createElement(
+        'h1',
+        null,
+        user.name ? user.name : 'Anonymous'
+    ),
+    user.age >= 18 && React.createElement(
+        'p',
+        null,
+        'Age: ',
+        user.age
+    ),
+    getLocation(user.location)
+);
+
+var appRoot = document.getElementById('app');
+
+ReactDOM.render(template, appRoot);

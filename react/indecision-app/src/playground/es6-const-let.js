@@ -12,3 +12,15 @@ console.log('nameLet: ', nameLet);
 // cannot redifine or reassign const variable
 const nameConst = 'james';
 console.log('nameConst: ', nameConst);
+
+// Block scoping (Let and Const are specific to a block; var isn't)
+
+const fullName = 'Matthew Castillo';
+let firstName;
+
+if (fullName) {
+    firstName = fullName.split(' ')[0];
+    console.log(firstName);
+}
+
+console.log(firstName);
