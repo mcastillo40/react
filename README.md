@@ -1,2 +1,2 @@
 # react
-develop react application
+develop a react application
