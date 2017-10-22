@@ -57,6 +57,7 @@ const template2 = (
     </div>
 );
 
+// Section where template will be rendered
 const appRoot = document.getElementById('app');
 
 ReactDOM.render(template, appRoot);
