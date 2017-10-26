@@ -1,7 +1,8 @@
-// Arguments object - no longer bound with arrow functions
+// Arguments object - no longer bound with arrow functions //
 
+// arguments can not be seen in es6
 const add = function(a, b) {
-    console.log(arguments); // Display all arguments
+    console.log(arguments); // Display all arguments passed into function
     return a + b;
 };
 //console.log(add(5, 10, 1000));
@@ -10,7 +11,7 @@ const add = function(a, b) {
 const newAdd = (x, y) => x + y; 
 //console.log(newAdd(5, 15, 1000));
 
-// this keyword - no longer bound
+// this keyword - no longer bound // 
 const user = {
     name: 'Matt',
     cities: ['Orange', 'Irvine', 'Seattle', 'Portland'],
@@ -28,6 +29,8 @@ const multiplier = {
     number: [2, 4, 5],
     multiplyBy: 5,
     multiply() {
-        return 0; 
+        return this.number.map((num) => this.multiplyBy * num); 
     }
 };
+
+console.log(multiplier.multiply());

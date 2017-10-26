@@ -1,9 +1,10 @@
 'use strict';
 
-// Arguments object - no longer bound with arrow functions
+// Arguments object - no longer bound with arrow functions //
 
+// arguments can not be seen in es6
 var add = function add(a, b) {
-    console.log(arguments); // Display all arguments
+    console.log(arguments); // Display all arguments passed into function
     return a + b;
 };
 //console.log(add(5, 10, 1000));
@@ -14,7 +15,7 @@ var newAdd = function newAdd(x, y) {
 };
 //console.log(newAdd(5, 15, 1000));
 
-// this keyword - no longer bound
+// this keyword - no longer bound // 
 var user = {
     name: 'Matt',
     cities: ['Orange', 'Irvine', 'Seattle', 'Portland'],
@@ -36,6 +37,12 @@ var multiplier = {
     number: [2, 4, 5],
     multiplyBy: 5,
     multiply: function multiply() {
-        return 0;
+        var _this2 = this;
+
+        return this.number.map(function (num) {
+            return _this2.multiplyBy * num;
+        });
     }
 };
+
+console.log(multiplier.multiply());
