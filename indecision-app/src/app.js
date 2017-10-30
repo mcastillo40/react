@@ -24,37 +24,7 @@ const template = (
             <li>Item 1</li>
         </ol>
     </div>
-);
 
-// Create user object 
-const user = {
-    name: 'Matt C',
-    age: '19',
-    location: 'Orange County'
-};
-
-// Validate that the user has a location
-// If no location than <p> will not be visible
-function getLocation(location) {
-    if(location) {
-        return <p>Location: {location}</p>;
-    }
-}
-
-const template2 = (
-    <div>
-        {/*Ternary example to validate if user has a name*/}
-        <h1>{user.name ? user.name : 'Anonymous'}</h1> 
-
-        {/*Logical Operator to validate that the user is 18 or over
-            Will display age if 18 or over
-            Will not display age if a user is not given an age
-        */}
-        {(user.age >= 18) &&  <p>Age: {user.age}</p>}
-
-        {/*Function Call for location*/}
-        {getLocation(user.location)} 
-    </div>
 );
 
 // Section where template will be rendered
