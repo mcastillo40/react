@@ -1,48 +1,88 @@
 'use strict';
 
-// Arguments object - no longer bound with arrow functions //
+console.log("App working");
 
-// arguments can not be seen in es6
-var add = function add(a, b) {
-    console.log(arguments); // Display all arguments passed into function
-    return a + b;
+// Create app object title/subtitle
+var app = {
+    title: 'Indecision App',
+    subtitle: 'Life is Amazing',
+    options: ['One', 'Two']
 };
-//console.log(add(5, 10, 1000));
 
-// Cannot use 'arguments' in es6
-var newAdd = function newAdd(x, y) {
-    return x + y;
-};
-//console.log(newAdd(5, 15, 1000));
+// JSX - Javascript XML 
+// The webpage template example
+var template = React.createElement(
+    'div',
+    null,
+    React.createElement(
+        'h1',
+        null,
+        app.title
+    ),
+    app.subtitle && React.createElement(
+        'p',
+        null,
+        app.subtitle
+    ),
+    React.createElement(
+        'p',
+        null,
+        app.options.length > 0 ? 'Here are your options' : 'No options'
+    ),
+    React.createElement(
+        'ol',
+        null,
+        React.createElement(
+            'li',
+            null,
+            'Item 2'
+        ),
+        React.createElement(
+            'li',
+            null,
+            'Item 1'
+        )
+    )
+);
 
-// this keyword - no longer bound // 
+// Create user object 
 var user = {
-    name: 'Matt',
-    cities: ['Orange', 'Irvine', 'Seattle', 'Portland'],
-    printPlacesLived: function printPlacesLived() {
-        var _this = this;
-
-        return this.cities.map(function (city) {
-            return _this.name + ' has lived in ' + city;
-        });
-
-        // this.cities.forEach((city) => {
-        //     console.log(this.name + ' has lived in ' + city);
-        // });
-    }
-};
-//console.log(user.printPlacesLived());
-
-var multiplier = {
-    number: [2, 4, 5],
-    multiplyBy: 5,
-    multiply: function multiply() {
-        var _this2 = this;
-
-        return this.number.map(function (num) {
-            return _this2.multiplyBy * num;
-        });
-    }
+    name: 'Matt C',
+    age: '19',
+    location: 'Orange County'
 };
 
-console.log(multiplier.multiply());
+// Validate that the user has a location
+// If no location than <p> will not be visible
+function getLocation(location) {
+    if (location) {
+        return React.createElement(
+            'p',
+            null,
+            'Location: ',
+            location
+        );
+    }
+}
+
+var template2 = React.createElement(
+    'div',
+    null,
+    React.createElement(
+        'h1',
+        null,
+        user.name ? user.name : 'Anonymous'
+    ),
+    user.age >= 18 && React.createElement(
+        'p',
+        null,
+        'Age: ',
+        user.age
+    ),
+    getLocation(user.location)
+);
+
+// Section where template will be rendered
+var appRoot = document.getElementById('app');
+
+ReactDOM.render(template, appRoot);
