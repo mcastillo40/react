@@ -1,5 +1,3 @@
-console.log("App working");
-
 // Create app object title/subtitle
 const app = {
     title: 'Indecision App',
