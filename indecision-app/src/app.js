@@ -20,7 +20,6 @@ const onFormSubmit = (e) => {
         e.target.elements.option.value = "";
         renderPage();
     }
-
 };
 
 // Removes all options placed in the array by user
@@ -28,7 +27,15 @@ const removeAll = () => {
     app.options = [];
  
     renderPage();
-}
+};
+
+const makeDecision = () => {
+    const randomNum = Math.floor(Math.random() * app.options.length);
+    const option = app.options[randomNum];
+
+    alert(option);
+};
+
 
 // Section where template will be rendered
 const appRoot = document.getElementById('app');
@@ -45,13 +52,15 @@ const renderPage = () => {
     
             {/*If options are available then inform user that options are available if not then inform user*/}
             <p>{(app.options.length > 0) ? 'Here are your options' : 'No options'}</p>
-            <p>{app.options.length}</p>
+
+            <button disabled={app.options.length === 0} onClick={makeDecision}>What Should I do?</button>
 
             <button onClick={removeAll}>Remove all</button> 
 
             <ol>
-                <li>Item 2</li>
-                <li>Item 1</li>
+                {
+                   app.options.map((choice) =>  <li key={choice}>{choice}</li>) 
+                }
             </ol>
             <form onSubmit={onFormSubmit}>
                 <input type="text" name="option"/>

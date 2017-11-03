@@ -9,6 +9,9 @@ var app = {
     options: []
 };
 
+// Item submitted by user will be added to the options array
+// Will render the page again after being submitted
+// Validate that an item was entered and submitted prior to rendering the page
 var onFormSubmit = function onFormSubmit(e) {
     e.preventDefault();
 
@@ -21,11 +24,18 @@ var onFormSubmit = function onFormSubmit(e) {
     }
 };
 
+// Removes all options placed in the array by user
 var removeAll = function removeAll() {
-
     app.options = [];
 
     renderPage();
+};
+
+var makeDecision = function makeDecision() {
+    var randomNum = Math.floor(Math.random() * app.options.length);
+    var option = app.options[randomNum];
+
+    alert(option);
 };
 
 // Section where template will be rendered
@@ -53,9 +63,9 @@ var renderPage = function renderPage() {
             app.options.length > 0 ? 'Here are your options' : 'No options'
         ),
         React.createElement(
-            'p',
-            null,
-            app.options.length
+            'button',
+            { disabled: app.options.length === 0, onClick: makeDecision },
+            'What Should I do?'
         ),
         React.createElement(
             'button',
@@ -65,16 +75,13 @@ var renderPage = function renderPage() {
         React.createElement(
             'ol',
             null,
-            React.createElement(
-                'li',
-                null,
-                'Item 2'
-            ),
-            React.createElement(
-                'li',
-                null,
-                'Item 1'
-            )
+            app.options.map(function (choice) {
+                return React.createElement(
+                    'li',
+                    { key: choice },
+                    choice
+                );
+            })
         ),
         React.createElement(
             'form',
