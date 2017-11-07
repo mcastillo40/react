@@ -1,73 +1,77 @@
-// Create app object title/subtitle
-const app = {
-    title: 'Indecision App',
-    subtitle: 'Life is Amazing',
-    options: []
-};
+// Wrapper class for the entire Indecision web app
+class IndecisionApp extends React.Component {
+    render() {
+        const title = 'Indecision App';
+        const subTitle = 'Put your life in the hands of a computer';
+        const options = ['Thing 1', 'Thing 2', 'Thing 4'];
 
-// Item submitted by user will be added to the options array
-// Will render the page again after being submitted
-// Validate that an item was entered and submitted prior to rendering the page
-const onFormSubmit = (e) => {
-    e.preventDefault();
-
-    const option = e.target.elements.option.value;
-
-    if(option) {
-        app.options.push(option);
-        e.target.elements.option.value = "";
-        renderPage();
+        return (
+            <div>
+                <Header title={title} subTitle={subTitle}/>
+                <Action />
+                <Options options={options}/>
+                <AddOption />
+            </div>
+        );
     }
-};
+}
 
-// Removes all options placed in the array by user
-const removeAll = () => {
-    app.options = [];
- 
-    renderPage();
-};
+// The header class
+class Header extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1>{this.props.title}</h1>
+                <h2>{this.props.subTitle}</h2>
+            </div>
+        );
+    }
+}
 
-const makeDecision = () => {
-    const randomNum = Math.floor(Math.random() * app.options.length);
-    const option = app.options[randomNum];
+// The action class
+class Action extends React.Component{
+    render() {
+        return (
+            <div>
+                <button>What should I do</button>
+            </div>
+        );
+    }
+}
 
-    alert(option);
-};
+// The Options class displays all of the options
+class Options extends React.Component {
+    render() {
+        return (
+            <div>
+            {
+                this.props.options.map((option) => <Option key={option} optionText={option}/>)
+            }
+            </div>
+        );
+    }
+}
 
+// The Option class
+class Option extends React.Component {
+    render() {
+        return (
+            <div>
+                {this.props.optionText}
+            </div>
+        );
+    }
+}
 
-// Section where template will be rendered
-const appRoot = document.getElementById('app');
+// The add option class
+class AddOption extends React.Component {addOption
+    render() {
+        return (
+            <div>
+                <button>Add Option</button>
+            </div>
+        );
+    }
+}
 
-// JSX - Javascript XML 
-// The webpage template example
-const renderPage = () => {
-    const template = (
-        <div>
-            <h1>{app.title}</h1> 
-    
-            {/*Validate that subtitle exists then display if available*/}
-            {(app.subtitle) && <p>{app.subtitle}</p>}
-    
-            {/*If options are available then inform user that options are available if not then inform user*/}
-            <p>{(app.options.length > 0) ? 'Here are your options' : 'No options'}</p>
-
-            <button disabled={app.options.length === 0} onClick={makeDecision}>What Should I do?</button>
-
-            <button onClick={removeAll}>Remove all</button> 
-
-            <ol>
-                {
-                   app.options.map((choice) =>  <li key={choice}>{choice}</li>) 
-                }
-            </ol>
-            <form onSubmit={onFormSubmit}>
-                <input type="text" name="option"/>
-                <button>Add Option</button> 
-            </form>
-        </div>
-    );
-
-    ReactDOM.render(template, appRoot);
-};
-
-renderPage();
+ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
