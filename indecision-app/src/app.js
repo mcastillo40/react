@@ -9,7 +9,7 @@ class IndecisionApp extends React.Component {
     this.handleOption = this.handleOption.bind(this);
 
     this.state = {
-      options: props.options
+      options: []
     }
   }
 
@@ -100,9 +100,11 @@ class IndecisionApp extends React.Component {
   }
 }
 
+/* Creates default props
 IndecisionApp.defaultProps = {
   options: []
 };
+*/
 
 // The Header function
 // Displays the Header and the subTitle

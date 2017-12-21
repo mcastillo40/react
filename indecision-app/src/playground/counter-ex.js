@@ -9,8 +9,28 @@ class Counter extends React.Component {
     
     // default state object
     this.state = {
-      count: props.count
+      count: 0
     };
+  }
+
+  // Get count from local storage
+  componentDidMount() {
+
+    const stringCount = localStorage.getItem('count');
+    const count = parseInt(stringCount, 10);
+
+    // Validate that count is a number
+    if (!isNaN(count))
+      this.setState(() => ({ count }));
+
+  }
+
+  // Update local storage with updated count
+  componentDidUpdate(prevProps, prevState) {
+
+    if(prevState.count !== this.state.count) {
+      localStorage.setItem('count', this.state.count);
+    }
   }
   
   handleAddOne() {
@@ -49,9 +69,11 @@ class Counter extends React.Component {
   }
 }
 
+/* Default props
 Counter.defaultProps = {
   count: 0 
 };
+*/
 
 ReactDOM.render(<Counter />, document.getElementById('app'));
 
