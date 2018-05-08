@@ -16,6 +16,10 @@ module.exports = (env) => {
                 exclude: /node_modules/
             }]
         },
-        mode: isProduction ? 'production' : 'development'
+        mode: isProduction ? 'production' : 'development',
+        devtool: "cheap-module-eval-source-map",
+        devServer: {
+            contentBase: path.join(__dirname, 'public')
+        }
     }
 };

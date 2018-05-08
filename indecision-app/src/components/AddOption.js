@@ -2,15 +2,11 @@ import React from "react";
 
 // Form to add option
 export default class AddOption extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleOption = this.handleOption.bind(this);
-    this.state = {
-      error: undefined
-    };
-  }
+  state = {
+    error: undefined
+  };
 
-  handleOption(e) {
+  handleOption = (e) => {
     e.preventDefault();
 
     const option = e.target.elements.option.value.trim();
