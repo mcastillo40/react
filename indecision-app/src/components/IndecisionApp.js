@@ -13,8 +13,8 @@ export default class IndecisionApp extends React.Component {
   };
 
   handleClearSelecteOption = () => {
-    this.setState(() => ({selectedOption: null}));
-  }
+    this.setState(() => ({ selectedOption: null }));
+  };
 
   // Set state to empty when user requests to delete options
   handleDeletedOptions = () => {
@@ -79,17 +79,22 @@ export default class IndecisionApp extends React.Component {
     return (
       <div>
         <Header subTitle={subTitle} />
-        <Action
-          hasOptions={this.state.options.length > 0}
-          handlePick={this.handlePickOption}
+        <div className="container">
+          <Action
+            hasOptions={this.state.options.length > 0}
+            handlePick={this.handlePickOption}
+          />
+          <Options
+            options={this.state.options}
+            handleDelete={this.handleDeletedOptions}
+            handleDeleteOption={this.handleDeleteOption}
+          />
+          <AddOption handleOption={this.handleOption} />
+        </div>
+        <OptionModal
+          selectedOption={this.state.selectedOption}
+          closeModal={this.handleClearSelecteOption}
         />
-        <Options
-          options={this.state.options}
-          handleDelete={this.handleDeletedOptions}
-          handleDeleteOption={this.handleDeleteOption}
-        />
-        <AddOption handleOption={this.handleOption} />
-        <OptionModal selectedOption={this.state.selectedOption} closeModal={this.handleClearSelecteOption}/>
       </div>
     );
   }

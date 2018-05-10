@@ -6,7 +6,9 @@ import Option from "./Option";
 // Will call option function to return current options
 const Options = props => (
   <div>
-    <button onClick={props.handleDelete}>Remove All Options</button>
+    <button className="button button--link" onClick={props.handleDelete}>
+      Remove All Options
+    </button>
     {props.options.length === 0 && <p>Please add an option to Start</p>}
     {props.options.map(option => (
       <Option

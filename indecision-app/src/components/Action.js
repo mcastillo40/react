@@ -5,8 +5,12 @@ import React from "react";
 // It is only able to be clecked if there are options to choose
 const Action = props => (
   <div>
-    <button onClick={props.handlePick} disabled={!props.hasOptions}>
-      What should I do
+    <button
+      className="big-button"
+      onClick={props.handlePick}
+      disabled={!props.hasOptions}
+    >
+      What Should I Do
     </button>
   </div>
 );
