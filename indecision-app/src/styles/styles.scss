@@ -1,5 +1,9 @@
 @import './base/_settings';
 @import './base/base';
+@import './components/_addOption';
 @import './components/_button';
 @import './components/_container';
-@import './components/header'
+@import './components/header';
+@import './components/_modal';
+@import './components/_option';
+@import './components/_widget';
